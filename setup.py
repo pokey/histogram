@@ -3,19 +3,20 @@
 
 from setuptools import setup
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Click>=6.0',
-    # TODO: put package requirements here
+    'click>=6.7',
+    'plotly>=2.0.6',
+    'scipy>=0.19.0',
+    'pyyaml>=3.12',
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
 ]
 
 setup(
