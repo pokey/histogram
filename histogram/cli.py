@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-from warnings import warn
 
 import click
 import numpy as np
@@ -61,11 +60,11 @@ def main(bins, log_x, log_y, chart_type, fit_dist, tests, out, input):
     if chart_type == 'bar' and fit_dist is not None:
         raise UsageError("Bar chart not supported in combination with "
                          "fit_dist")
-    if tests and fit_dist is None:
-        raise UsageError("Must specify a distribution to do goodness-of-fit "
-                         "tests")
     if tests and fit_dist == "skewnorm":
-        warn("Running goodness-of-fit tests with skewnorm is slow")
+        click.echo(
+            "WARNING: Running goodness-of-fit tests with skewnorm is slow",
+            err=True
+        )
     if re.match('\d+', bins):
         bins = int(bins)
     data = np.array([float(x) for x in input])
